@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Game — Галерея | Компьютерный клуб Уфа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">MEAT <span>GAME</span></div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="prices.html">Тарифы</a>
+        <a href="reviews.html">Отзывы</a>
+        <a href="gallery.html" class="active">Галерея</a>
+        <a href="menu.html">Меню</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <button class="btn-mobile" id="menuBtn">☰</button>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Фотогалерея клуба Meat Game</h2>
+    <p style="text-align: center; margin-bottom: 30px;">Давлеткильдеева бульвар, 5 | 9 Standart ПК | 13 VIP ПК | 2 PS5</p>
+    
+    <div class="gallery-grid" id="galleryGrid"></div>
+</div>
+
+<footer>
+    <p>© 2025 Meat Game — Компьютерный клуб в Уфе</p>
+    <p>Давлеткильдеева бул., 5 | 24/7 | +7 (904) 739-78-08</p>
+</footer>
+
+<script>
+    const imageFilesList = [
+        "standart-zone",
+        "vip-zone", 
+        "ps5-zone",
+        "monitors",
+        "keyboard",
+        "chairs",
+        "club-interior",
+        "main-hall"
+    ];
+    
+    const galleryGrid = document.getElementById('galleryGrid');
+    let foundAny = false;
+    
+    for (let i = 0; i < imageFilesList.length; i++) {
+        const baseName = imageFilesList[i];
+        const imgPath = `images/${baseName}.jpg`;
+        
+        const img = new Image();
+        img.onload = function() {
+            const galleryItem = document.createElement('div');
+            galleryItem.className = 'gallery-item';
+            galleryItem.innerHTML = `<img src="${imgPath}" class="gallery-img-real" loading="lazy">`;
+            galleryGrid.appendChild(galleryItem);
+            foundAny = true;
+        };
+        img.onerror = function() {
+            const imgPathPng = `images/${baseName}.png`;
+            const imgPng = new Image();
+            imgPng.onload = function() {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.innerHTML = `<img src="${imgPathPng}" class="gallery-img-real" loading="lazy">`;
+                galleryGrid.appendChild(galleryItem);
+                foundAny = true;
+            };
+            imgPng.src = imgPathPng;
+        };
+        img.src = imgPath;
+    }
+    
+    setTimeout(function() {
+        if (!foundAny) {
+            let manualList = '';
+            for (let i = 0; i < imageFilesList.length; i++) {
+                manualList += `<div style="background:#1a1a1f; padding:10px; border-radius:10px;">📷 images/${imageFilesList[i]}.jpg</div>`;
+            }
+            galleryGrid.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:40px; background:#151518; border-radius:20px;">
+                <h3>📸 Фотографии не найдены</h3>
+                <p>Проверьте папку <strong>images</strong>. Должны быть файлы:</p>
+                <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; margin-top:20px; text-align:left;">${manualList}</div>
+            </div>`;
+        }
+    }, 1000);
+</script>
+
+<style>
+    .gallery-img-real {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        display: block;
+        border-radius: 15px;
+    }
+    
+    .gallery-item {
+        background: #151518;
+        border-radius: 20px;
+        overflow: hidden;
+        transition: 0.3s;
+    }
+    
+    .gallery-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 30px rgba(255, 0, 60, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+        .gallery-img-real {
+            height: 180px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .gallery-img-real {
+            height: 150px;
+        }
+    }
+</style>
+</body>
+</html>

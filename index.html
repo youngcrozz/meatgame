@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Game — Главная | Компьютерный клуб Уфа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">MEAT <span>GAME</span></div>
+    <nav>
+        <a href="index.html" class="active">Главная</a>
+        <a href="prices.html">Тарифы</a>
+        <a href="reviews.html">Отзывы</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="menu.html">Меню</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <button class="btn-mobile" id="menuBtn">☰</button>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>MEAT GAME</h1>
+        <p>ЛУЧШИЙ КОМПЬЮТЕРНЫЙ КЛУБ В УФЕ</p>
+        <p>RTX 5060 / 5070 | 240-260Hz | Киберспортивные кресла | 24/7</p>
+        <a href="prices.html" class="btn">Забронировать ПК</a>
+    </div>
+</section>
+
+<div class="container">
+    <h2 class="section-title">Новости клуба</h2>
+    <div class="news-grid" id="newsGrid"></div>
+</div>
+
+<div class="container stats-container">
+    <h2 class="section-title">Meat Game в цифрах</h2>
+    <div class="stats-grid">
+        <div class="stat-card"><span class="stat-number">22</span><span>Мощных ПК</span></div>
+        <div class="stat-card"><span class="stat-number">2</span><span>PlayStation 5</span></div>
+        <div class="stat-card"><span class="stat-number">240-260</span><span>Герц мониторы</span></div>
+        <div class="stat-card"><span class="stat-number">24/7</span><span>Работаем всегда</span></div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Почему выбирают нас?</h2>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Мощное железо</h3>
+            <p>RTX 5060/5070, DDR5 32GB 6000MHz</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🎧</div>
+            <h3>Профессиональная периферия</h3>
+            <p>HyperX Cloud II, Dark Project, Logitech</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🍔</div>
+            <h3>Снеки и напитки</h3>
+            <p>Lays, Adrenaline, Coca-Cola, горячие закуски</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">☕</div>
+            <h3>Бесплатный чай/кофе</h3>
+            <p>Для всех гостей клуба</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="section-title">Наш адрес</h2>
+    <div class="address-block">
+        <p>Давлеткильдеева бульвар, 5, Уфа</p>
+        <p>Телефон: +7 (904) 739-78-08</p>
+        <p>Работаем: Круглосуточно, без выходных</p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Meat Game — Компьютерный клуб в Уфе</p>
+    <p>Давлеткильдеева бул., 5 | 24/7 | +7 (904) 739-78-08</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    const newsData = [
+        {title: "Новые RTX 5070 ПК", desc: "В клубе появились 13 компьютеров с видеокартами RTX 5070 и мониторами 260Hz!"},
+        {title: "Турнир CS2", desc: "25 мая в 18:00 пройдет турнир по Counter-Strike 2. Призовой фонд — 15 000 рублей. Регистрация в клубе!"},
+        {title: "PS5 Зона открыта", desc: "Теперь в Meat Game доступны 2 PlayStation 5 Slim с 55\" 4K телевизорами!"},
+        {title: "Новое меню", desc: "В ассортименте: Круггетсы, Чебупели, Чебупицца, Хотстеры и свежие напитки!"}
+    ];
+    const newsGrid = document.getElementById('newsGrid');
+    if(newsGrid) {
+        newsData.forEach(n => {
+            newsGrid.innerHTML += `<div class="card"><div class="news-title">${n.title}</div><div>${n.desc}</div></div>`;
+        });
+    }
+</script>
+</body>
+</html>

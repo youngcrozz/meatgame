@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Game — Отзывы | Компьютерный клуб Уфа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">MEAT <span>GAME</span></div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="prices.html">Тарифы</a>
+        <a href="reviews.html" class="active">Отзывы</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <button class="btn-mobile" id="menuBtn">☰</button>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Отзывы наших гостей</h2>
+    
+    <div class="reviews-list" id="reviewsList"></div>
+    
+    <div class="review-form">
+        <h3>Оставить отзыв</h3>
+        <input type="text" id="reviewName" placeholder="Ваше имя">
+        <textarea id="reviewText" placeholder="Расскажите о своём опыте в Meat Game..."></textarea>
+        <select id="reviewRating">
+            <option value="5">★★★★★ (Отлично)</option>
+            <option value="4">★★★★☆ (Хорошо)</option>
+            <option value="3">★★★☆☆ (Средне)</option>
+        </select>
+        <button class="btn" onclick="addReview()">Оставить отзыв</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Meat Game — Компьютерный клуб в Уфе</p>
+    <p>Давлеткильдеева бул., 5 | 24/7 | +7 (904) 739-78-08</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    let reviews = JSON.parse(localStorage.getItem('meatgame_reviews')) || [
+        {name: "Илья", rating: 5, text: "Очень крутой компьютерный клуб! RTX 5070 летает, монитор 260Hz — кайф. Админы отзывчивые."},
+        {name: "Максим", rating: 5, text: "Играл с друзьями всю ночь на VIP ПК. HyperX Cloud II — звук бомба. Обязательно приду еще!"},
+        {name: "Артур", rating: 5, text: "Настоящее мясо! Железо мощное, кресла удобные, чай/кофе бесплатно. Лучший клуб на Давлеткильдеева!"},
+        {name: "Диана", rating: 4, text: "PS5 зона Играли в EA FC 25 на 55 дюймах — кайф. Минус только один, мало места, но админ сказал расширяются)"}
+    ];
+
+    function renderStars(rating) {
+        return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+    }
+
+    function renderReviews() {
+        const container = document.getElementById('reviewsList');
+        if(container) {
+            container.innerHTML = reviews.map((r, i) => `
+                <div class="review-item">
+                    <div class="review-name">${escapeHtml(r.name)}</div>
+                    <div class="review-stars">${renderStars(r.rating)}</div>
+                    <div class="review-text">${escapeHtml(r.text)}</div>
+                    <button class="delete-review" onclick="deleteReview(${i})">🗑️</button>
+                </div>
+            `).join('');
+        }
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    window.addReview = function() {
+        let name = document.getElementById('reviewName').value.trim();
+        let text = document.getElementById('reviewText').value.trim();
+        let rating = parseInt(document.getElementById('reviewRating').value);
+        
+        if(!name) { alert("Введите имя"); return; }
+        if(!text) { alert("Введите отзыв"); return; }
+        
+        reviews.unshift({name: name, rating: rating, text: text});
+        localStorage.setItem('meatgame_reviews', JSON.stringify(reviews));
+        renderReviews();
+        
+        document.getElementById('reviewName').value = '';
+        document.getElementById('reviewText').value = '';
+        alert("Спасибо за отзыв! Скидка 20% при следующем визите");
+    };
+
+    window.deleteReview = function(index) {
+        if(confirm('Удалить отзыв?')) {
+            reviews.splice(index, 1);
+            localStorage.setItem('meatgame_reviews', JSON.stringify(reviews));
+            renderReviews();
+        }
+    };
+
+    renderReviews();
+</script>
+</body>
+</html>

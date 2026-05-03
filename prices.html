@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Game — Тарифы и характеристики ПК</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">MEAT <span>GAME</span></div>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="prices.html" class="active">Тарифы</a>
+        <a href="reviews.html">Отзывы</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="contacts.html">Контакты</a>
+    </nav>
+    <button class="btn-mobile" id="menuBtn">☰</button>
+</header>
+
+<div class="container">
+    <h2 class="section-title">Тарифы и цены</h2>
+    
+    <div class="prices-table-wrapper">
+        <table class="prices-table">
+            <thead>
+                <tr><th>Тариф</th><th>Кол-во ПК</th><th>1 час</th><th>3 часа</th><th>5 часов</th><th>Ночь (22:00-08:00)</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><strong>Standart</strong><br><small>RTX 5060</small></td><td>9 ПК</td><td>160₽</td><td>400₽</td><td>600₽</td><td>850₽</td></tr>
+                <tr><td><strong>VIP</strong><br><small>RTX 5070</small></td><td>13 ПК</td><td>300₽</td><td>700₽</td><td>1100₽</td><td>1500₽</td></tr>
+                <tr><td><strong>PS5 Зона</strong><br><small>PlayStation 5</small></td><td>2 консоли</td><td>350₽</td><td>850₽</td><td>1300₽</td><td>—</td></tr>
+                <tr><td><strong>Duo (2 ПК)</strong><br><small>Для двоих друзей</small></td><td>—</td><td>200₽</td><td>500₽</td><td>900₽</td><td>1300₽</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2 class="section-title">Полные характеристики ПК</h2>
+    
+    <div class="specs-compare">
+        <div class="specs-card standart-specs">
+            <h3>Standart — 9 ПК</h3>
+            <div class="specs-group">
+                <h4>Железо</h4>
+                <ul>
+                    <li>Видеокарта: RTX 5060 8GB</li>
+                    <li>Процессор: Intel Core i5-14400F</li>
+                    <li>ОЗУ: DDR5 6000 MHz 32GB</li>
+                    <li>SSD: NVMe 1TB</li>
+                    <li>Материнская плата: B760M</li>
+                    <li>Блок питания: 750W Gold</li>
+                </ul>
+            </div>
+            <div class="specs-group">
+                <h4>Девайсы</h4>
+                <ul>
+                    <li>Монитор: Titan Army FHD 240Hz</li>
+                    <li>Наушники: Dark Project Arena</li>
+                    <li>Клавиатура: AULA F75</li>
+                    <li>Мышь: Logitech G102 LightSync</li>
+                    <li>Кронштейны: NB для мониторов</li>
+                    <li>Кресло: Игровое с поддержкой спины</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="specs-card vip-specs">
+            <h3>VIP — 13 ПК</h3>
+            <div class="specs-group">
+                <h4>Железо</h4>
+                <ul>
+                    <li>Видеокарта: RTX 5070 12GB</li>
+                    <li>Процессор: AMD Ryzen 5 7500F</li>
+                    <li>ОЗУ: DDR5 6000 MHz 32GB</li>
+                    <li>SSD: NVMe 1TB</li>
+                    <li>Материнская плата: B650</li>
+                    <li>Блок питания: 850W Gold</li>
+                </ul>
+            </div>
+            <div class="specs-group">
+                <h4>Девайсы</h4>
+                <ul>
+                    <li>Монитор: AOC 27" 2K 260Hz</li>
+                    <li>Наушники: HyperX Cloud II</li>
+                    <li>Клавиатура: Dark Project Arena KD1</li>
+                    <li>Мышь: VGN Dragonfly F1 Moba</li>
+                    <li>Кронштейны: NB для мониторов</li>
+                    <li>Кресло: Премиум с массажем</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="specs-card ps5-specs">
+            <h3>PS5 Зона — 2 консоли</h3>
+            <div class="specs-group">
+                <h4>Оборудование</h4>
+                <ul>
+                    <li>Консоль: PlayStation 5 Slim</li>
+                    <li>Телевизор: Soundmax 55" 4K UHD</li>
+                    <li>Геймпады: DualSense (2 шт)</li>
+                    <li>Гарнитура: Pulse 3D</li>
+                    <li>Игры: EA FC 25, GOW Ragnarok, Spider-Man 2, GTA V</li>
+                </ul>
+            </div>
+            <div class="specs-group">
+                <h4>Дополнительно</h4>
+                <ul>
+                    <li>Диваны: Удобные на 2-3 человека</li>
+                    <li>Подставки для ног</li>
+                    <li>Столики для снеков</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="section-title">Калькулятор стоимости</h2>
+    <div class="calculator">
+        <div class="calc-row">
+            <select id="calcTariff">
+                <option value="160">Standart (160₽/час)</option>
+                <option value="300">VIP (300₽/час)</option>
+                <option value="200">Duo (200₽/час за место)</option>
+                <option value="350">PS5 (350₽/час)</option>
+            </select>
+            <input type="number" id="calcHours" placeholder="Количество часов" min="0.5" step="0.5" value="2">
+        </div>
+        <div class="calc-result" id="calcResult">💰 Итого: 320 ₽</div>
+        <button class="btn" onclick="alert('Бронирование: позвоните +7 (904) 739-78-08')">Забронировать место</button>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 Meat Game — Компьютерный клуб в Уфе</p>
+    <p>Давлеткильдеева бул., 5 | 24/7 | +7 (904) 739-78-08</p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    function updateCalculator() {
+        const tariff = parseFloat(document.getElementById('calcTariff').value);
+        const hours = parseFloat(document.getElementById('calcHours').value);
+        if(!isNaN(tariff) && !isNaN(hours) && hours > 0) {
+            document.getElementById('calcResult').innerHTML = `💰 Итого: ${tariff * hours} ₽`;
+        } else {
+            document.getElementById('calcResult').innerHTML = `💰 Введите корректные часы`;
+        }
+    }
+    const calcTariff = document.getElementById('calcTariff');
+    const calcHours = document.getElementById('calcHours');
+    if(calcTariff && calcHours) {
+        calcTariff.addEventListener('change', updateCalculator);
+        calcHours.addEventListener('input', updateCalculator);
+        updateCalculator();
+    }
+</script>
+</body>
+</html>
